@@ -7,9 +7,18 @@ import Container from 'react-bootstrap/Container';
 import { useNavigate } from "react-router-dom";
 
 const LogIn = () => {
-   const navigate = useNavigate();
-   const handleClick = () => {
-      navigate("/home");
+   const navigate = useNavigate()
+   const {setUser} = useUserContext()
+   const [u, setU] = useState({username: '', password: ''})
+
+   const goNavigate = (dir) =>{
+     navigate(dir)
+   }
+
+   const handleLogIn = async () => {
+      const response = await login(u)
+      setUser(response) 
+      goNavigate("/home")
    }
 
    return(
@@ -20,14 +29,14 @@ const LogIn = () => {
                <Row className="mb-3">
                   <Form.Group as={Col} controlId="formGridUsername">
                      <Form.Label>Username</Form.Label>
-                     <Form.Control type="text" placeholder="Enter username" />
+                     <Form.Control type="text" placeholder="Enter username" onChange={(e) => setU({...u, username: e.target.value})}/>
                   </Form.Group>
                </Row>
 
                <Row className="mb-3">               
                   <Form.Group as={Col} controlId="formGridPassword">
                      <Form.Label>Password</Form.Label>
-                     <Form.Control type="password" placeholder="Password" />
+                     <Form.Control type="password" placeholder="Password" onChange={(e) => setU({...u, password: e.target.value})}/>
                   </Form.Group>
                </Row>
 
