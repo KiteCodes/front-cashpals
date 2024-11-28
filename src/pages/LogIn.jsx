@@ -5,6 +5,9 @@ import Form from 'react-bootstrap/Form';
 import Row from 'react-bootstrap/Row';
 import Container from 'react-bootstrap/Container';
 import { useNavigate } from "react-router-dom";
+import { useUserContext } from "../providers/UserProvider";
+import { useState } from "react";
+import { login } from "../services/api"
 
 const LogIn = () => {
    const navigate = useNavigate()
@@ -42,7 +45,7 @@ const LogIn = () => {
 
                <Row>
                 <Col md={{ span: 6, offset: 10 }}>
-                  <Button variant="primary" type="submit" onClick={handleClick}>
+                  <Button variant="primary" type="button" onClick={handleLogIn}>
                      Log In
                   </Button>
                 </Col>
