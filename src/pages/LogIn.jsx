@@ -12,10 +12,10 @@ const LogIn = () => {
      navigate(dir)
    }
 
-   const handleClick = async () => {
+   const handleLogIn = async () => {
       const response = await login(u)
       setUser(response) 
-      setUser ? goNavigate("/home") : window.location.reload(false)
+      goNavigate("/home")
    }
 
    return(
@@ -25,7 +25,7 @@ const LogIn = () => {
          <br />   
          <input type="text" placeholder="username" onChange={(e) => setU({...u, username: e.target.value})} />
          <input type="password" placeholder="password" onChange={(e) => setU({...u, password: e.target.value})} />
-         <button onClick={handleClick}>Log in</button> 
+         <button onClick={handleLogIn}>Log in</button> 
          <br />
          <br />   
          <button type="button" onClick={() => goNavigate("/register")}>register</button>

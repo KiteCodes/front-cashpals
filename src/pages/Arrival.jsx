@@ -1,9 +1,7 @@
 import { useState } from "react"
-import { useUserContext } from "../providers/UserProvider"
 import { useNavigate } from "react-router-dom"
 
 const Arrival = () => {
-   const {setUser} = useUserContext()
    const navigate = useNavigate()
 
    const [u, setU] = useState({username: '', password: ''})
