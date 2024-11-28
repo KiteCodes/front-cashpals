@@ -8,18 +8,14 @@ const Arrival = () => {
 
    const [u, setU] = useState({username: '', password: ''})
 
-   function handleClick() {
-      navigate("/login")
-   }
-
-   function navHome() {
-      navigate("/home")
+   const goNavigate = (dir) =>{
+     navigate(dir)
    }
    
    return (
       <div>
-         <button type="button" onClick={handleClick}>Log in</button>
-         <button type="button" onClick={navHome}>Home</button>
+         <button type="button" onClick={() => goNavigate("/login")}>Log in</button>
+         <button type="button" onClick={() => goNavigate("/home")}>Home</button>
       </div>
    )
 }

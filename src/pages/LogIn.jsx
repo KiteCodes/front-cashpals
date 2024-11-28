@@ -8,23 +8,19 @@ const LogIn = () => {
    const {setUser} = useUserContext()
    const [u, setU] = useState({username: '', password: ''})
 
-   function goBack() {
-      navigate("/")
-   }
-
-   function register() {
-      navigate("/register")
+   const goNavigate = (dir) =>{
+     navigate(dir)
    }
 
    const handleClick = async () => {
       const response = await login(u)
-      setUser(response)
-      navigate("/home")
+      setUser(response) 
+      setUser ? goNavigate("/home") : window.location.reload(false)
    }
 
    return(
       <div>
-         <button type="button" onClick={goBack}>Back</button>
+         <button type="button" onClick={() => goNavigate("/")}>Back</button>
          <br />   
          <br />   
          <input type="text" placeholder="username" onChange={(e) => setU({...u, username: e.target.value})} />
@@ -32,7 +28,7 @@ const LogIn = () => {
          <button onClick={handleClick}>Log in</button> 
          <br />
          <br />   
-         <button type="button" onClick={register}>register</button>
+         <button type="button" onClick={() => goNavigate("/register")}>register</button>
       </div>
    )
 }
