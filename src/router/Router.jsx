@@ -16,14 +16,14 @@ const Router = () => (
     <Routes>
       <Route index element={<Arrival/>} />
       
-      <Route exact path="/login"     element={<LogIn/>}/>
-      <Route exact path="/register"  element={<Register/>}/>
+      <Route path="/login"     element={<LogIn/>}/>
+      <Route path="/register"  element={<Register/>}/>
 
-      <Route exact path="/home"      element={<PrivateRoute component={Home}/>}/>
-      <Route exact path="/contacts"  element={<PrivateRoute component={Contacts}/>}/>
-      <Route exact path="/group/:id" element={<PrivateRoute component={Group}/>}/>
-      <Route exact path="/groups"    element={<PrivateRoute component={Groups}/>}/>
-      <Route exact path="/profile"   element={<PrivateRoute component={Profile}/>}/>
+      <Route path="/home"      element={<PrivateRoute component={Home}/>    }/>
+      <Route path="/contacts"  element={<PrivateRoute component={Contacts}/>}/>
+      <Route path="/group/:id" element={<PrivateRoute component={Group}/>   }/>
+      <Route path="/groups"    element={<PrivateRoute component={Groups}/>  }/>
+      <Route path="/profile"   element={<PrivateRoute component={Profile}/> }/>
     </Routes>
    </BrowserRouter>
 )

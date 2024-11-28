@@ -57,7 +57,7 @@ const Register = () => {
 
                <Row>
                 <Col md={{ span: 6, offset: 10 }}>
-                  <Button variant="primary" type="submit" onClick={handleClick}>
+                  <Button variant="primary" type="button" onClick={handleClick}>
                      Register
                   </Button>
                 </Col>
