@@ -25,7 +25,7 @@ export const getUsers = async () =>{
 }
 
 // Function to create a user
-export const createUser = async (user) => {
+export const register = async (user) => {
   try {
     const response = await i.post('/signup', user); // Adjust endpoint as necessary
     return response.data; // Return the response data
