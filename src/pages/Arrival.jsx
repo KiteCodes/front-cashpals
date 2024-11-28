@@ -1,26 +1,12 @@
 import { useState } from "react"
 import { useUserContext } from "../providers/UserProvider"
-import { useNavigate } from "react-router-dom"
+import NavBar from "../components/NavBar"
 
 const Arrival = () => {
    const {setUser} = useUserContext()
-   const navigate = useNavigate()
-
    const [u, setU] = useState({username: '', password: ''})
-
-   function handleClick() {
-      navigate("/login")
-   }
-
-   function navHome() {
-      navigate("/home")
-   }
-   
    return (
-      <div>
-         <button type="button" onClick={handleClick}>Log in</button>
-         <button type="button" onClick={navHome}>Home</button>
-      </div>
+         <NavBar/>
    )
 }
 
