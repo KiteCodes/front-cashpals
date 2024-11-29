@@ -27,7 +27,7 @@ const LogIn = () => {
    return(
       <>
       <NavBar/>
-      <Container fluid className="d-flex justify-content-center align-items-center vh-100">
+      <Container fluid className="d-flex justify-content-center align-items-center vh-100">      
             <Form className="p-3 border rounded" style={{ width: "100%", maxWidth: "700px"}}>
                <Row className="mb-3">
                   <Form.Group as={Col} controlId="formGridUsername">
