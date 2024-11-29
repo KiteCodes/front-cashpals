@@ -2,6 +2,7 @@ import { useState } from 'react';
 import Button from 'react-bootstrap/Button';
 import Offcanvas from 'react-bootstrap/Offcanvas';
 import LateralNavButtons from './LateralNavButtons';
+import Image from 'react-bootstrap/Image';
 
 const LateralNav = () => {
   const [show, setShow] = useState(false);
@@ -12,7 +13,8 @@ const LateralNav = () => {
   return (
     <>
       <Button variant="primary" onClick={handleShow}>
-        ...
+      <Image fluid src="../../public/white-menu.png"
+          style={{ height: '40px', width: 'auto' }}/>
       </Button>
 
       <Offcanvas show={show} onHide={handleClose}>
