@@ -1,0 +1,8 @@
+// Sobrescribir colores de Bootstrap
+$primary: #66b2b2;
+$secondary: #457b9d;
+$success: #2a9d8f;
+$danger: #e63946;
+
+// Importar Bootstrap con los nuevos valores
+@import "../node_modules/bootstrap/scss/bootstrap";

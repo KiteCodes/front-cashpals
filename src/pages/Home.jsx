@@ -1,4 +1,5 @@
 import { useNavigate } from "react-router-dom"
+import LoggedNavBar from "../components/LoggedNavBar"
 
 const Home = () => {
    const navigate = useNavigate()
@@ -25,11 +26,7 @@ const Home = () => {
    }
 
    return (
-      <>
-         <button onClick={()=> goNavigate("/profile")}>Profile</button>
-         <button onClick={()=> goNavigate("/groups")}>Groups</button>
-         <button onClick={()=> goNavigate("/contacts")}>Contacts</button>
-      </>
+      <LoggedNavBar/>
    )
 }
 
