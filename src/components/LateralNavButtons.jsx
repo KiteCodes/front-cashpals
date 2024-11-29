@@ -1,3 +1,4 @@
+import { Button, ListGroupItem } from 'react-bootstrap';
 import Col from 'react-bootstrap/Col';
 import ListGroup from 'react-bootstrap/ListGroup';
 import Row from 'react-bootstrap/Row';
@@ -13,14 +14,20 @@ const LateralNavButtons = () => {
             <ListGroup.Item action href="/home">
               Home
             </ListGroup.Item>
-            <ListGroup.Item action href="/groups">
+            <ListGroupItem>
               Groups
-            </ListGroup.Item>
+            </ListGroupItem>
             <ListGroup.Item action href="/contacts">
               Contacts
             </ListGroup.Item>
           </ListGroup>
         </Col>  
+      </Row>
+      <br />
+      <Row>
+        <Col md={{span: 8, offset: 8}}>
+          <Button variant="primary">Settings</Button>
+        </Col>
       </Row>
     </Tab.Container>
   );
