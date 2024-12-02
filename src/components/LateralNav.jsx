@@ -21,7 +21,7 @@ const LateralNav = () => {
         <Offcanvas.Header closeButton>
           <Offcanvas.Title>Menu</Offcanvas.Title>
         </Offcanvas.Header>
-        <Offcanvas.Body>
+        <Offcanvas.Body className='d-flex flex-column justify-content-between'>
           <LateralNavButtons/>
         </Offcanvas.Body>
       </Offcanvas>

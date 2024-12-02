@@ -11,7 +11,7 @@ const LoggedNavBar = () => {
         <LateralNav />
         <Nav className="ms-auto">
         <Navbar.Brand href='/home'>
-          <Image fluid src="../../public/logoProv_svg.svg"
+          <Image fluid src="../../logoProv_svg.svg"
           style={{ height: '40px', width: 'auto' }}/>
         </Navbar.Brand>
         </Nav>
