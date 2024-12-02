@@ -13,7 +13,7 @@ const LateralNav = () => {
   return (
     <>
       <Button variant="primary" onClick={handleShow}>
-      <Image fluid src="../../public/white-menu.png"
+      <Image fluid src="../../white-menu.png"
           style={{ height: '40px', width: 'auto' }}/>
       </Button>
 
