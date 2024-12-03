@@ -30,7 +30,7 @@ const Home = () => {
    return (
       <>
          <LoggedNavBar/>
-         <Container fluid className="d-flex justify-content-center vh-100">
+         <Container fluid className="d-flex justify-content-center" style={{marginTop: "100px"}}>
             <Container fluid className="d-flex flex-column justify-content-center align-items-center" >
                <h1>Your Balance</h1>
                <Container fluid className="d-flex justify-content-center" style={{ width: "100%", maxWidth: "800px"}}>
