@@ -30,7 +30,6 @@ const Contacts = () => {
                      <h2 className=" align-self-center mb-0">Contacts list</h2>
                      <Button className='ms-auto' variant="primary" onClick={() => setModalShow(true)}>Add contact</Button>
                   </Container>
-                     
                      <ListGroup >
                         <ListGroup.Item>
                         Link 1
