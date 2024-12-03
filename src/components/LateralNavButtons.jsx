@@ -29,7 +29,7 @@ const LateralNavButtons = () => {
       <Button variant="primary" 
       onClick={()=> goNavigate("/profile")}
       style={{marginBottom: '20px'}}>
-        Settings
+        Profile Settings
       </Button>
     </Tab.Container>
   );
