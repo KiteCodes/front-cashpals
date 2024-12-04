@@ -7,7 +7,7 @@ const i = axios.create({
 export const login = async ({username, password}) =>{
 
   const token = btoa(username + ':' + password);
-  const response =  await i.post('/user/signin', {},
+  const response =  await i.post('/signin', {},
   {
     headers: {  
       'Content-Type': 'application/json',
@@ -26,7 +26,7 @@ export const getUsers = async () =>{
 
 export const register = async (user) => {
   try {
-    const response = await i.post('/user/signup', user); // Adjust endpoint as necessary
+    const response = await i.post('/signup', user); // Adjust endpoint as necessary
     return response.data; // Return the response data
   } catch (error) {
     // Handle error appropriately
