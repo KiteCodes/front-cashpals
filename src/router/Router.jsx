@@ -19,7 +19,7 @@ const Router = () => (
       <Route path="/login"     element={<LogIn/>}/>
       <Route path="/register"  element={<Register/>}/>
 
-      <Route path="/home"      element={<PrivateRoute component={Home}/>}/>
+      <Route path="/home"      element={<PrivateRoute component={Home}/>    }/>
       <Route path="/contacts"  element={<PrivateRoute component={Contacts}/>}/>
       <Route path="/group/:id" element={<PrivateRoute component={Group}/>   }/>
       <Route path="/groups"    element={<PrivateRoute component={Groups}/>  }/>
