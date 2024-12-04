@@ -1,4 +1,3 @@
-import {useNavigate} from 'react-router-dom';
 import LoggedNavBar from '../components/LoggedNavBar';
 import Button from 'react-bootstrap/Button';
 import Col from 'react-bootstrap/Col';
