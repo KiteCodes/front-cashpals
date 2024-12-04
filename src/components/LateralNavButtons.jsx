@@ -12,13 +12,13 @@ const LateralNavButtons = () => {
   return (
     <Tab.Container id="list-group-tabs-example" defaultActiveKey="#link1">
       <ListGroup>
-        <ListGroup.Item as={'button'} action onClick={goNavigate("/home")}>
+        <ListGroup.Item action onClick={() => goNavigate("/home")}>
           Home
         </ListGroup.Item>
-        <ListGroup.Item as={'button'} action onClick={goNavigate("/groups")}>
+        <ListGroup.Item action onClick={() => goNavigate("/groups")}>
           Groups
         </ListGroup.Item>
-        <ListGroup.Item as={'button'} action onClick={goNavigate("/contacts")}>
+        <ListGroup.Item action onClick={() => goNavigate("/contacts")}>
           Contacts
         </ListGroup.Item>
       </ListGroup>
