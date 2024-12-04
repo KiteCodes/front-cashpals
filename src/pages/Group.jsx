@@ -1,15 +1,10 @@
-import { useNavigate} from 'react-router-dom';
+import LoggedNavBar from '../components/LoggedNavBar';
 
 const Group = () => {
-   const navigate = useNavigate()
-
-   const goNavigate = (dir) =>{
-     navigate(dir)
-   }
 
    return (
       <>
-         <button onClick={()=> goNavigate("/home")}>Home</button>
+         <LoggedNavBar/>
       </>
    )
 }  

@@ -6,13 +6,8 @@ import Form from 'react-bootstrap/Form';
 import Row from 'react-bootstrap/Row';
 import Container from 'react-bootstrap/Container';
 import ListGroup from 'react-bootstrap/ListGroup';
-const Profile = () => {
-   const navigate = useNavigate()
-   
-   const goNavigate = (dir) =>{
-     navigate(dir)
-   }
 
+const Profile = () => {
    return (
       <>
          <LoggedNavBar/>

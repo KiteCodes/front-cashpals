@@ -5,6 +5,7 @@ import Button from 'react-bootstrap/Button';
 import ListGroup from 'react-bootstrap/ListGroup';
 import {useState} from 'react';
 import ContactForm from '../components/ContactForm';
+
 const Contacts = () => {
    const navigate = useNavigate();
    const [modalShow, setModalShow] = useState(false);
