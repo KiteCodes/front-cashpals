@@ -3,8 +3,6 @@ import ListGroup from 'react-bootstrap/ListGroup';
 import Tab from 'react-bootstrap/Tab';
 import {useNavigate} from 'react-router-dom';
 
-import {useNavigate} from 'react-router-dom';
-
 const LateralNavButtons = () => {
   const navigate = useNavigate()
 
