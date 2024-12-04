@@ -1,7 +1,7 @@
 import axios from 'axios';
 
 const i = axios.create({
-  baseURL: 'http://localhost:8080'
+  baseURL: 'https://back-cashpals.onrender.com'
 })
 
 export const login = async ({username, password}) =>{
