@@ -1,6 +1,13 @@
 @import './custom.scss';
+@font-face {
+    font-family: CustomFont;
+    src: url('/fonts/ComicMono.ttf');
+}
 
-body {
+*{
+    font-family: CustomFont !important;
+}
+body    {
     background-color: #cde8e5;
 }
 
