@@ -1,0 +1,26 @@
+.carousel {
+    height: 250vh;
+}
+
+.contentContainer {
+    height: 100vh;
+    top: 0;
+    position: sticky;
+    display: flex;
+    align-items: center;
+    overflow: hidden; /* Ensure no extra content is visible */
+}
+
+.images {
+    display: flex; /* Use flexbox for horizontal layout */
+    gap: 2rem; /* Space between images */
+    width: calc(100vw * 4); /* Adjust for 4 images (update based on number of images) */
+}
+
+.imageItem {
+    min-width: 100vw; /* Each image takes up full viewport width */
+    height: 100%;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
