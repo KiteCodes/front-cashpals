@@ -6,13 +6,13 @@ import ImageContainer from '../ImageContainer/ImageContainer.jsx';
 
 const HorizontalScroll = () => {
     const targetRef = useRef(null);
-    const{ scrollYProgress } = useScroll({targetRef});
+    const{ scrollYProgress } = useScroll({target: targetRef});
 
-    const x = useTransform(scrollYProgress, [0, 1], [0, -window.innerWidth * 3]);
+    const x = useTransform(scrollYProgress, [0, 1], ['0%', '-55%']);
 
     return (
-        <div className="carousel">
-            <div className="contentContainer" ref={targetRef}>
+        <div className="carousel" ref={targetRef}>
+            <div className="contentContainer">
                 <motion.div className="images" style={{ x }}>
                     <motion.div className="imageItem" 
                     initial={{opacity: 0, y: 150}} 
