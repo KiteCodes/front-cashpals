@@ -9,6 +9,11 @@ const LateralNavButtons = () => {
   const goNavigate = (dir) =>{
     navigate(dir)
   }
+
+  const handleLogOut = () => {
+    localStorage.removeItem('user');
+    navigate('/arrival')
+  }
   
   return (
     <Tab.Container id="list-group-tabs-example" defaultActiveKey="#link1">
@@ -22,12 +27,15 @@ const LateralNavButtons = () => {
         <ListGroup.Item action onClick={() => goNavigate("/contacts")}>
           Contacts
         </ListGroup.Item>
+        <ListGroup.Item action onClick={() => goNavigate("/profile")}>
+          Settings
+        </ListGroup.Item>
       </ListGroup>
 
       <Button variant="primary" 
-      onClick={()=> goNavigate("/profile")}
+      onClick={handleLogOut}
       style={{marginBottom: '20px'}}>
-        Profile Settings
+        Logout
       </Button>
     </Tab.Container>
   );
