@@ -11,7 +11,7 @@ const Contacts = () => {
    const [modalShow, setModalShow] = useState(false);
 
    const goNavigate = (dir) =>{
-   navigate(dir)
+      navigate(dir)
    }
 
    const listContacts = () => {
@@ -54,6 +54,9 @@ const Contacts = () => {
             </Container>
          </Container>
          <ContactForm show={modalShow} onHide={() => setModalShow(false)}/>
+
+
+         {/* <button onClick={()=>localStorage.clear()}>log out</button> */}
       </>
    )
 }

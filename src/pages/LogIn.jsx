@@ -19,9 +19,9 @@ const LogIn = () => {
    }
 
    const handleLogIn = async () => {
-      const response = await login(u)
+      const response = await login(u) 
       setUser(response) 
-      goNavigate("/home")
+      goNavigate("/")
    }
 
    return(

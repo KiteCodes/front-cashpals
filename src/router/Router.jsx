@@ -14,12 +14,12 @@ import PrivateRoute from "./PrivateRouter";
 const Router = () => (
    <BrowserRouter>
     <Routes>
-      <Route index element={<Arrival/>} />
+      <Route index element={<PrivateRoute component={Home}/>} />
       
+      <Route path="/arrival"   element={<Arrival/>}/>
       <Route path="/login"     element={<LogIn/>}/>
       <Route path="/register"  element={<Register/>}/>
 
-      <Route path="/home"      element={<PrivateRoute component={Home}/>    }/>
       <Route path="/contacts"  element={<PrivateRoute component={Contacts}/>}/>
       <Route path="/group/:id" element={<PrivateRoute component={Group}/>   }/>
       <Route path="/groups"    element={<PrivateRoute component={Groups}/>  }/>

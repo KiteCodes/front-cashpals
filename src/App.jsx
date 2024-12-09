@@ -1,6 +1,11 @@
 import Router from "./router/Router";
 import './styles/App.css'
+import { localToken } from "./hooks/local-token";
+const App = () => {
+   localToken()
 
-const App = () => <Router/>
+   return <Router/>
+}
+
 
 export default App
