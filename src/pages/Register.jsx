@@ -14,7 +14,6 @@ const Register = () => {
    const [u, setU] = useState({firstName: '', lastName: '', username: '', password: '', phone: '', email: ''})
 
    const handleRegister = async () => {
-      console.log(u)
       await register(u)
       navigate("/login");
    }

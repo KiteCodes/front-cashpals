@@ -5,7 +5,6 @@ const i = axios.create({
 })
 
 export const login = async ({username, password}) =>{
-
   const token = btoa(username + ':' + password);
   const response =  await i.post('/signin', {},
   {
@@ -16,6 +15,7 @@ export const login = async ({username, password}) =>{
   }
   );
   setAuth(token);
+  localStorage.setItem('user', token)
   return response.data;
 }
 
@@ -35,6 +35,6 @@ export const register = async (user) => {
   }
 };
 
-const setAuth = async (token) => {
+export const setAuth = async (token) => {
   i.defaults.headers.common.Authorization = `basic ${token}`;
 };

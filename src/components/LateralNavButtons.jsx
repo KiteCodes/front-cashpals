@@ -9,10 +9,11 @@ const LateralNavButtons = () => {
   const goNavigate = (dir) =>{
     navigate(dir)
   }
+  
   return (
     <Tab.Container id="list-group-tabs-example" defaultActiveKey="#link1">
       <ListGroup>
-        <ListGroup.Item action onClick={() => goNavigate("/home")}>
+        <ListGroup.Item action onClick={() => goNavigate("/")}>
           Home
         </ListGroup.Item>
         <ListGroup.Item action onClick={() => goNavigate("/groups")}>
