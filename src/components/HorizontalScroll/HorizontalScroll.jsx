@@ -1,8 +1,10 @@
 import { useRef } from 'react';
 import './HorizontalScroll.css';
 import One from '/eating.jpg';
+import Two from '/padel.jpg';
+import Three from '/cine.jpg';
+import Four from '/supermarket.jpg';
 import { motion, useScroll, useTransform } from 'framer-motion';
-import ImageContainer from '../ImageContainer/ImageContainer.jsx';
 
 const HorizontalScroll = () => {
     const targetRef = useRef(null);
@@ -18,25 +20,29 @@ const HorizontalScroll = () => {
                     initial={{opacity: 0, y: 150}} 
                     whileInView={{opacity: 1, y: 0, threshold: 0.99}}
                     transition={{duration: 0.5, ease: 'easeOut'}}>
-                        <ImageContainer imageSource={One} description='1' />
+                        <h2 className="title">Eat with your friends...</h2>
+                        <img src={One} alt="Some people eating" className="image" />
                     </motion.div>
                     <motion.div className="imageItem"
                     initial={{opacity: 0, y: 150}} 
                     whileInView={{opacity: 1, y: 0, threshold: 0.99}}
                     transition={{duration: 0.5, ease: 'easeOut'}}>
-                        <ImageContainer imageSource={One} description='2' />
+                        <img src={Two} alt="Padel" className="image" />
+                        <h2 className="title">Play whatever you want...</h2>
                     </motion.div>
                     <motion.div className="imageItem"
                     initial={{opacity: 0, y: 150}} 
                     whileInView={{opacity: 1, y: 0, threshold: 0.99}}
                     transition={{duration: 0.5, ease: 'easeOut'}}>
-                        <ImageContainer imageSource={One} description='3' />
+                        <h2 className="title">Go to every event...</h2>
+                        <img src={Three} alt="People in cinema" className="image" />
                     </motion.div>
                     <motion.div className="imageItem"
                     initial={{opacity: 0, y: 150}} 
                     whileInView={{opacity: 1, y: 0, threshold: 0.99}}
                     transition={{duration: 0.5, ease: 'easeOut'}}>
-                        <ImageContainer imageSource={One} description='4' />
+                        <img src={Four} alt="Supermarket" className="image" />
+                        <h2 className="title">Buy some groceries...</h2>
                     </motion.div>
                 </motion.div>
             </div>
