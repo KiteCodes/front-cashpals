@@ -1,6 +1,6 @@
 import { useRef } from 'react';
 import './HorizontalScroll.css';
-import One from '../../../public/eating.jpg';
+import One from '/eating.jpg';
 import { motion, useScroll, useTransform } from 'framer-motion';
 import ImageContainer from '../ImageContainer/ImageContainer.jsx';
 
