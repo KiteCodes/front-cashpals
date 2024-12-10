@@ -39,7 +39,7 @@ const Contacts = () => {
          <Container fluid className="d-flex justify-content-center" style={{marginTop: "100px"}}>
             <Container fluid className="d-flex flex-column justify-content-center align-items-center gap-3" >
                   
-               <h1>Your Balance</h1>
+               <h1>Contacts</h1>
                <Container fluid className="d-flex justify-content-center p-3 border rounded"  style={{ width: "100%", maxWidth: "800px", backgroundColor: "white"}}>
                   <Container className="d-flex flex-column gap-3">
                   <Container className="d-flex gap-2">
@@ -52,9 +52,6 @@ const Contacts = () => {
                         </ListGroup.Item>
                         <ListGroup.Item>
                         Link 2
-                        </ListGroup.Item>
-                        <ListGroup.Item action onClick={()=> goNavigate("/group/1")} style={{color: "red"}}>
-                        This one is a button
                         </ListGroup.Item>
                         <ListGroup.Item>
                         Link 1
