@@ -3,20 +3,35 @@ import LoggedNavBar from '../components/LoggedNavBar';
 import {Container} from 'react-bootstrap';
 import Button from 'react-bootstrap/Button';
 import ListGroup from 'react-bootstrap/ListGroup';
-import {useState} from 'react';
+import {useEffect, useState} from 'react';
 import ContactForm from '../components/ContactForm';
+import { getContacts, saveContacts } from '../services/api';
+import { useUserContext } from '../providers/UserProvider';
 
 const Contacts = () => {
+   const {user} = useUserContext()
    const navigate = useNavigate();
-   const [modalShow, setModalShow] = useState(false);
+   const [modalShow, setModalShow] = useState(false)
+   const [contacts, setContacts] = useState()
+   const [contactsList, setContactsList] = useState()
 
    const goNavigate = (dir) =>{
       navigate(dir)
    }
 
-   const listContacts = () => {
-
+   const listContacts = () =>{
+      contacts?.map(c=>(<>{c.username}</>)) // añadir logica de seleccionar usuarios con su id
    }
+
+   const handleSaveContacts = async () =>{
+      await saveContacts(user.id, contactsList)
+   }
+
+   useEffect(()=>{
+      getContacts(user.id).then(data =>{
+         setContacts(data)
+      })
+   }, [])
 
    return (
       <>
