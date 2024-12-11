@@ -1,4 +1,4 @@
-import LoggedNavBar from '../components/LoggedNavBar';
+import LoggedNavBar from '../components/LoggedNavBar/LoggedNavBar.jsx';
 import {Container} from 'react-bootstrap';
 import ListGroup from 'react-bootstrap/ListGroup';
 

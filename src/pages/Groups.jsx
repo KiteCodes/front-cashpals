@@ -1,8 +1,8 @@
-import LoggedNavBar from '../components/LoggedNavBar';
+import LoggedNavBar from '../components/LoggedNavBar/LoggedNavBar.jsx';
 import {Container} from 'react-bootstrap';
 import Button from 'react-bootstrap/Button';
 import ListGroup from 'react-bootstrap/ListGroup';
-import GroupForm from '../components/GroupForm';
+import GroupForm from '../components/GroupForm/GroupForm.jsx';
 import {useNavigate} from 'react-router-dom';
 import {useState} from 'react';
 

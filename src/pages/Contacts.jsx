@@ -1,10 +1,10 @@
 import {useNavigate} from 'react-router-dom';
-import LoggedNavBar from '../components/LoggedNavBar';
+import LoggedNavBar from '../components/LoggedNavBar/LoggedNavBar';
 import {Container} from 'react-bootstrap';
 import Button from 'react-bootstrap/Button';
 import ListGroup from 'react-bootstrap/ListGroup';
 import {useEffect, useState} from 'react';
-import ContactForm from '../components/ContactForm';
+import ContactForm from '../components/ContactForm/ContactForm';
 import { getContacts, saveContacts } from '../services/api';
 import { useUserContext } from '../providers/UserProvider';
 
@@ -31,7 +31,7 @@ const Contacts = () => {
       getContacts(user.id).then(data =>{
          setContacts(data)
       })
-   }, [])
+   }, []);
 
    return (
       <>

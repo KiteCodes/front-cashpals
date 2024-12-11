@@ -1,7 +1,7 @@
 import { useState } from 'react';
 import Button from 'react-bootstrap/Button';
 import Offcanvas from 'react-bootstrap/Offcanvas';
-import LateralNavButtons from './LateralNavButtons';
+import LateralNavButtons from '../LateralNavButtons/LateralNavButtons.jsx';
 import Image from 'react-bootstrap/Image';
 
 const LateralNav = () => {
