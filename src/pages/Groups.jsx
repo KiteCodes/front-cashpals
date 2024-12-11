@@ -28,7 +28,7 @@ const Groups = () => {
       getGroups().then(data =>{
          setGroups(data)
       })
-   }, [])
+   }, [groups]);
    
    return (
       <>
