@@ -4,19 +4,31 @@ import Button from 'react-bootstrap/Button';
 import ListGroup from 'react-bootstrap/ListGroup';
 import GroupForm from '../components/GroupForm/GroupForm.jsx';
 import {useNavigate} from 'react-router-dom';
-import {useState} from 'react';
+import {useState, useEffect} from 'react';
+import { getGroups } from '../services/api';
 
 const Groups = () => {
    const navigate = useNavigate();
    const [modalShow, setModalShow] = useState(false);
+   const [groups, setGroups] = useState()
 
    const goNavigate = (dir) =>{
       navigate(dir)
    }
 
-   const listGroups = () => {
+   const listGroups = () => 
+   groups?.map((data)=>{
+      return (
+      <ListGroup.Item action onClick={()=> goNavigate("/group/" + data.id)} style={{color: "red"}}>
+         {data.name} - {data.description}
+      </ListGroup.Item>)
+   })     
 
-   }
+   useEffect(()=>{
+      getGroups().then(data =>{
+         setGroups(data)
+      })
+   }, [])
    
    return (
       <>
@@ -27,28 +39,13 @@ const Groups = () => {
                <h1>Groups</h1>
                <Container fluid className="d-flex justify-content-center p-3 border rounded"  style={{ width: "100%", maxWidth: "800px", backgroundColor: "white"}}>
                   <Container className="d-flex flex-column gap-3">
-                  <Container className="d-flex gap-2">
-                     <h2 className=" align-self-center mb-0">Groups list</h2>
-                     <Button className='ms-auto' variant="primary" onClick={() => setModalShow(true)}>New group</Button>
-                  </Container>
-                     <ListGroup >
-                        <ListGroup.Item>
-                        Link 1
-                        </ListGroup.Item>
-                        <ListGroup.Item>
-                        Link 2
-                        </ListGroup.Item>
-                        <ListGroup.Item action onClick={()=> goNavigate("/group/1")} style={{color: "red"}}>
-                        This one is a button
-                        </ListGroup.Item>
-                        <ListGroup.Item>
-                        Link 1
-                        </ListGroup.Item>
-                        <ListGroup.Item>
-                        Link 2
-                        </ListGroup.Item>
-                     </ListGroup>
-
+                     <Container className="d-flex gap-2">
+                        <h2 className=" align-self-center mb-0">Groups list</h2>
+                        <Button className='ms-auto' variant="primary" onClick={() => setModalShow(true)}>New group</Button>
+                     </Container>
+                        <ListGroup>
+                           {listGroups()}
+                        </ListGroup>
                   </Container>
                </Container>
             </Container>
