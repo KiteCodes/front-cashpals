@@ -4,8 +4,8 @@ import Form from 'react-bootstrap/Form';
 import Row from 'react-bootstrap/Row';
 import Modal from 'react-bootstrap/Modal';
 import { useState } from 'react';
-import { createGroup } from '../services/api';
-import { useUserContext } from '../providers/UserProvider';
+import { createGroup } from '../../services/api';
+import { useUserContext } from '../../providers/UserProvider';
 
 
 const GroupForm = (props) => {
