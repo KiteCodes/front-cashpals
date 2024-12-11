@@ -20,6 +20,7 @@ const LogIn = () => {
 
    const handleLogIn = async () => {
       const response = await login(u) 
+      localStorage.setItem('user', JSON.stringify(response))
       setUser(response) 
       goNavigate("/")
    }
