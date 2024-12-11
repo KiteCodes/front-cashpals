@@ -1,10 +1,21 @@
-import { useState } from "react";
+import {useState, useEffect} from 'react';
 import { useUserContext } from "../providers/UserProvider";
+import {setAuth} from '../services/api';
 
 export const useAuth = () => {
-    const [state, setState] = useState(localStorage.getItem("user")) 
+    const {setUser, user} = useUserContext()
+
+    useEffect(() => {
+      const loggedInUserToken = localStorage.getItem("token");
+      const loggedInUser = JSON.parse(localStorage.getItem("user"));
+    
+      if (loggedInUserToken) {
+        setAuth(loggedInUserToken)
+        setUser(loggedInUser)
+      }
+    }, []);
 
     return {
-        isAuthenticated: !!state,
+      isAuthenticated: !!user,
     }
 }

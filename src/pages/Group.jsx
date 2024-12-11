@@ -1,8 +1,16 @@
+import { useState } from 'react';
 import LoggedNavBar from '../components/LoggedNavBar/LoggedNavBar.jsx';
 import {Container} from 'react-bootstrap';
 import ListGroup from 'react-bootstrap/ListGroup';
+import {useNavigate} from 'react-router-dom';
 
 const Group = () => {
+   const [group, setGroup] = useState()
+   const navigate = useNavigate()
+   
+   const goNavigate = (dir) =>{
+      navigate(dir)
+   }
 
    return (
       <>

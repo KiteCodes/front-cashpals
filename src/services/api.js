@@ -17,7 +17,7 @@ export const login = async ({username, password}) => {
   }
   );
   setAuth(token);
-  localStorage.setItem('user', token)
+  localStorage.setItem('token', token)
   return response.data;
 }
 
@@ -59,7 +59,7 @@ export const deleteUser = async (id) => {
 } 
 
 export const getContacts = async (id) => {
-  const response = await i.get('/user/contacts', id)
+  const response = await i.get('/user/contacts?id=' + id)
     return response.data
 }
 
