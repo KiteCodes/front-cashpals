@@ -1,16 +1,16 @@
 import {useNavigate} from 'react-router-dom';
-import LoggedNavBar from '../components/LoggedNavBar';
+import LoggedNavBar from '../components/LoggedNavBar/LoggedNavBar';
 import {Container} from 'react-bootstrap';
 import Button from 'react-bootstrap/Button';
 import ListGroup from 'react-bootstrap/ListGroup';
 import {useEffect, useState} from 'react';
-import ContactForm from '../components/ContactForm';
+import ContactForm from '../components/ContactForm/ContactForm';
 import { getContacts, saveContacts } from '../services/api';
 import { useUserContext } from '../providers/UserProvider';
 
 const Contacts = () => {
    const {user} = useUserContext()
-   const navigate = useNavigate();
+   const navigate = useNavigate()
    const [modalShow, setModalShow] = useState(false)
    const [contacts, setContacts] = useState()
    const [contactsList, setContactsList] = useState()
@@ -20,7 +20,7 @@ const Contacts = () => {
    }
 
    const listContacts = () =>{
-      contacts?.map(c=>(<>{c.username}</>)) // añadir logica de seleccionar usuarios con su id
+      contacts?.map(c=>(<>{c.username}</>)) // añadir logica de seleccionar varios usuarios con su id
    }
 
    const handleSaveContacts = async () =>{
@@ -28,10 +28,11 @@ const Contacts = () => {
    }
 
    useEffect(()=>{
+      console.log(user)
       getContacts(user.id).then(data =>{
          setContacts(data)
       })
-   }, [])
+   }, []);
 
    return (
       <>

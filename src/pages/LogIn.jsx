@@ -1,4 +1,4 @@
-import NavBar from "../components/NavBar"
+import NavBar from "../components/NavBar/NavBar.jsx"
 import Button from 'react-bootstrap/Button';
 import Col from 'react-bootstrap/Col';
 import Form from 'react-bootstrap/Form';
@@ -20,6 +20,7 @@ const LogIn = () => {
 
    const handleLogIn = async () => {
       const response = await login(u) 
+      localStorage.setItem('user', JSON.stringify(response))
       setUser(response) 
       goNavigate("/")
    }

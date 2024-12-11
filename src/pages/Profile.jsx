@@ -1,4 +1,4 @@
-import LoggedNavBar from '../components/LoggedNavBar';
+import LoggedNavBar from '../components/LoggedNavBar/LoggedNavBar.jsx';
 import Button from 'react-bootstrap/Button';
 import Col from 'react-bootstrap/Col';
 import Form from 'react-bootstrap/Form';
