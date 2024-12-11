@@ -1,7 +1,7 @@
 import Container from 'react-bootstrap/Container';
 import Nav from 'react-bootstrap/Nav';
 import Navbar from 'react-bootstrap/Navbar';
-import LateralNav from './LateralNav';
+import LateralNav from '../LateralNav/LateralNav.jsx';
 import Image from 'react-bootstrap/Image';
 import {useNavigate} from 'react-router-dom';
 
