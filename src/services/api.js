@@ -90,6 +90,11 @@ export const modifyGroupById = async (id, group) => { // delete group es ahora d
     return response.data
 } 
 
+export const deleteGroup = async (id) => {
+  const response = await i.delete('/party/' + id)
+    return response.data
+}
+
 // EVENT RELATED 
 
 export const getEvents = async () => {
