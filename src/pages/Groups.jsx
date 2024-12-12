@@ -5,9 +5,12 @@ import ListGroup from 'react-bootstrap/ListGroup';
 import GroupForm from '../components/GroupForm/GroupForm.jsx';
 import {useNavigate} from 'react-router-dom';
 import {useState, useEffect} from 'react';
-import { getGroups } from '../services/api';
+import { getGroups, deleteGroup } from '../services/api';
+import {useUserContext} from '../providers/UserProvider';
+import {Trash} from 'react-bootstrap-icons';
 
 const Groups = () => {
+   const {user} = useUserContext();
    const navigate = useNavigate();
    const [modalShow, setModalShow] = useState(false);
    const [groups, setGroups] = useState()
@@ -16,21 +19,47 @@ const Groups = () => {
       navigate(dir)
    }
 
+   const handleDeleteGroup = async (id, e) =>{
+      e.stopPropagation();
+      await deleteGroup(id);
+      updateGroups();
+   }
+
    const listGroups = () => 
-   groups?.map((data)=>{
+   groups?.map((data) => {
       console.log(data)
-      return (
-      <ListGroup.Item action onClick={()=> goNavigate("/group/" + data.id)} >
-         {data.name} <br /> {data.description}
-      </ListGroup.Item>)
-   })     
+      if(data.ownerId === user.id){
+         return (
+            <ListGroup.Item key={data.id} className='d-flex' action onClick={()=> goNavigate("/group/" + data.id)}>
+               <Container>
+                  <h5>{data.name}</h5>
+                  <p style={{margin: 0}}>{data.description}</p>
+               </Container>
+               <Button className='align-self-center' onClick={(e) => handleDeleteGroup(data.id,e)} variant="outline-danger" size="sm">
+                  <Trash size={15} />
+               </Button>
+            </ListGroup.Item>)
+      }else{
+         return (
+            <ListGroup.Item key={data.id} action onClick={()=> goNavigate("/group/" + data.id)}>
+               <Container>
+                  <h5>{data.name}</h5>
+                  <p style={{margin: 0}}>{data.description}</p>
+               </Container>
+            </ListGroup.Item>)
+      }  
+   });
 
    useEffect(()=>{
-      getGroups().then(data =>{
-         setGroups(data)
-      })
-   }, [groups]);
+      updateGroups();
+   }, []);
    
+   const updateGroups = () => {
+      getGroups().then(data => {
+         setGroups(data)
+      });
+   };
+
    return (
       <>
          <LoggedNavBar/>
@@ -51,7 +80,7 @@ const Groups = () => {
                </Container>
             </Container>
          </Container>
-         <GroupForm show={modalShow} onHide={() => setModalShow(false)}/>
+      <GroupForm show={modalShow} updateGroups={updateGroups} onHide={() => setModalShow(false)}/>
       </>
    )
 }
