@@ -28,7 +28,6 @@ const Contacts = () => {
    }
 
    useEffect(()=>{
-      console.log(user)
       getContacts(user.id).then(data =>{
          setContacts(data)
       })
