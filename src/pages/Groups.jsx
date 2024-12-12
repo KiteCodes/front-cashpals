@@ -18,7 +18,6 @@ const Groups = () => {
 
    const listGroups = () => 
    groups?.map((data)=>{
-      console.log(data)
       return (
       <ListGroup.Item action onClick={()=> goNavigate("/group/" + data.id)} >
          {data.name} <br /> {data.description}
