@@ -5,7 +5,7 @@ import ListGroup from 'react-bootstrap/ListGroup';
 import GroupForm from '../components/GroupForm/GroupForm.jsx';
 import {useNavigate} from 'react-router-dom';
 import {useState, useEffect} from 'react';
-import { getGroups, deleteGroup } from '../services/api';
+import { deleteGroup, getGroupsByUserId } from '../services/api';
 import {useUserContext} from '../providers/UserProvider';
 import {Trash} from 'react-bootstrap-icons';
 
@@ -13,7 +13,7 @@ const Groups = () => {
    const {user} = useUserContext();
    const navigate = useNavigate();
    const [modalShow, setModalShow] = useState(false);
-   const [groups, setGroups] = useState()
+   const [groups, setGroups] = useState();
 
    const goNavigate = (dir) =>{
       navigate(dir)
@@ -25,41 +25,41 @@ const Groups = () => {
       updateGroups();
    }
 
-   const listGroups = () => 
-   groups?.map((data) => {
-      console.log(data)
-      if(data.ownerId === user.id){
-         return (
-            <ListGroup.Item key={data.id} className='d-flex' action onClick={()=> goNavigate("/group/" + data.id)}>
-               <Container>
-                  <h5>{data.name}</h5>
-                  <p style={{margin: 0}}>{data.description}</p>
-               </Container>
-               <Button className='align-self-center' onClick={(e) => handleDeleteGroup(data.id,e)} variant="outline-danger" size="sm">
-                  <Trash size={15} />
-               </Button>
-            </ListGroup.Item>)
-      }else{
-         return (
-            <ListGroup.Item key={data.id} action onClick={()=> goNavigate("/group/" + data.id)}>
-               <Container>
-                  <h5>{data.name}</h5>
-                  <p style={{margin: 0}}>{data.description}</p>
-               </Container>
-            </ListGroup.Item>)
-      }  
-   });
-
-   useEffect(()=>{
+   useEffect(() => {
       updateGroups();
    }, []);
    
    const updateGroups = () => {
-      getGroups().then(data => {
+      getGroupsByUserId(user.id).then(data => {
          setGroups(data)
       });
    };
 
+
+   const listGroups = () => 
+      groups?.map((data) => {
+         if(data.ownerId === user.id){
+            return (
+               <ListGroup.Item key={data.id} className='d-flex' action onClick={()=> goNavigate("/group/" + data.id)}>
+                  <Container>
+                     <h5>{data.name}</h5>
+                     <p style={{margin: 0}}>{data.description}</p>
+                  </Container>
+                  <Button className='align-self-center' onClick={(e) => handleDeleteGroup(data.id,e)} variant="outline-danger" size="sm">
+                     <Trash size={15} />
+                  </Button>
+               </ListGroup.Item>)
+         }else{
+            return (
+               <ListGroup.Item key={data.id} action onClick={()=> goNavigate("/group/" + data.id)}>
+                  <Container>
+                     <h5>{data.name}</h5>
+                     <p style={{margin: 0}}>{data.description}</p>
+                  </Container>
+               </ListGroup.Item>)
+         }  
+      });
+      
    return (
       <>
          <LoggedNavBar/>
