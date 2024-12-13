@@ -13,9 +13,9 @@ const GroupForm = (props) => {
   const {user} = useUserContext()
   const handleCreation = async () => {
     setGroup({...group, ownerId: user.id})
-    console.log(group)
-    await createGroup(group)
-    props.onHide()
+    await createGroup(group);
+    props.updateGroups();
+    props.onHide();
   }
 
   return (
