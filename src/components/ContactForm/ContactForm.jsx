@@ -15,16 +15,24 @@ const ContactForm = (props) => {
   const [contactsList, setContactsList] = useState([])
   const [users, setUsers] = useState()
 
+  const setContacts = (id, e) => {
+    e.preventDefault();
+    console.log(contactsList)
+    contactsList.push(id)
+    setContactsList(contactsList)
+  }
+
   const listUsers = () => users?.map((data)=>{
     return (
-      <ListGroup.Item key={data.username} action onClick={contactsList.push(data.id)} >
+      <ListGroup.Item key={data.username} action onClick={(e)=>setContacts(data.id, e)} >
         {data.username} 
       </ListGroup.Item>
     )
   })
 
   const handleSaveContacts = async () =>{
-      await saveContacts(user.id, contactsList)
+    console.log(contactsList)
+      //await saveContacts(user.id, contactsList)
   }
 
   useEffect(()=>{
@@ -55,7 +63,7 @@ const ContactForm = (props) => {
         </Form>
       </Modal.Body>
       <Modal.Footer>
-        <Button>Add</Button>
+        <Button onClick={handleSaveContacts}>Add</Button>
       </Modal.Footer>
     </Modal>
     
