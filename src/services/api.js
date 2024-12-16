@@ -175,6 +175,6 @@ export const getTransactionByDebtorId = async (id) => {
 }
 
 export const getTransactionByIndebtedId = async (id) => {
-  const response = i.get('/transaction/indebted' + id)
+  const response = i.get('/transaction/indebted/' + id)
     return response.data
 }

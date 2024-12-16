@@ -14,33 +14,20 @@ const Contacts = () => {
    const [modalShow, setModalShow] = useState(false)
    const [contacts, setContacts] = useState()
 
-   const [contactsList, setContactsList] = useState([])
-   const [users, setUsers] = useState()
-
    const goNavigate = (dir) =>{
       navigate(dir)
    }
 
-   const listUsers = () => users?.map((data)=>{
-      return (
-      <ListGroup.Item key={data.username} action onClick={contactsList.push(data.id)} >
-         {data.username} 
-      </ListGroup.Item>)
-   })
-
    const listContacts = () => contacts?.map((data)=>{
       return (
-      <ListGroup.Item key={data.id}>
-         {data.name} 
+      <ListGroup.Item key={data.username}>
+         {data.username} 
       </ListGroup.Item>)
    })
 
    useEffect(()=>{
       getContacts(user.id).then(data =>{
          setContacts(data)
-      })
-      getUsers().then(data =>{
-         setUsers(data)
       })
    }, []);
 
@@ -58,7 +45,7 @@ const Contacts = () => {
                      <Button className='ms-auto' variant="primary" onClick={() => setModalShow(true)}>Add contact</Button>
                   </Container>
                      <ListGroup >
-                        {listUsers()}
+                        {listContacts()}
                      </ListGroup>
                   </Container>
                </Container>
