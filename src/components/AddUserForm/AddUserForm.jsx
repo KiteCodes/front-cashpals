@@ -1,37 +1,56 @@
 import Button from 'react-bootstrap/Button';
-import Col from 'react-bootstrap/Col';
 import Form from 'react-bootstrap/Form';
 import Row from 'react-bootstrap/Row';
 import Modal from 'react-bootstrap/Modal';
 import {useEffect, useState} from 'react';
-import { getUsers, saveContacts} from '../../services/api';
+import {getUsers, updateGroupUsers} from '../../services/api';
 import ListGroup from 'react-bootstrap/ListGroup';
 import {useUserContext} from '../../providers/UserProvider';
-
+import InputGroup from 'react-bootstrap/InputGroup';
+import { useParams } from 'react-router-dom';
 
 const AddUserForm = (props) => {
-  const {user} = useUserContext()
+  const {user} = useUserContext();
+  const { id } = useParams();
 
-  const [contactsList, setContactsList] = useState([])
-  const [users, setUsers] = useState()
-
-  const listUsers = () => users?.map((data)=>{
-    return (
-      <ListGroup.Item key={data.username} action onClick={contactsList.push(data.id)} >
-        {data.username} 
-      </ListGroup.Item>
-    )
-  })
-
-  const handleSaveContacts = async () =>{
-      await saveContacts(user.id, contactsList)
-  }
+  const [users, setUsers] = useState([]);
+  const [newUsers, setNewUsers] = useState([]);
 
   useEffect(()=>{
     getUsers().then(data =>{
       setUsers(data)
     })
   }, []);
+
+  const handleCheckboxChange = (userId) => {
+    setNewUsers(prevState => {
+      if (prevState.includes(userId)) {
+        return prevState.filter(id => id !== userId);
+      } else {
+        return [...prevState, userId];
+      }
+    });
+  };
+
+  const listUsers = () => users?.map((data) => { 
+    if(data.id !== user.id && users.includes(data.id))
+      return (
+        <ListGroup.Item key={data.id} className='d-flex justify-content-between align-items-center'>
+          <InputGroup.Checkbox
+          aria-label="Checkbox for following text input"
+          checked={newUsers.includes(data.id)}
+          onChange={() => handleCheckboxChange(data.id)}
+        />
+          <p style={{margin: 0}}>{data.username}</p>
+        </ListGroup.Item>
+      ) 
+  });
+
+  const handleCreation = async () => {
+      await updateGroupUsers(id, newUsers);
+      props.updateUsers();
+      props.onHide();
+    }
 
   return (
     <Modal
@@ -42,7 +61,7 @@ const AddUserForm = (props) => {
     >
       <Modal.Header closeButton>
         <Modal.Title id="contained-modal-title-vcenter">
-          Add Contact
+          Add User
         </Modal.Title>
       </Modal.Header>
       <Modal.Body>
@@ -55,7 +74,7 @@ const AddUserForm = (props) => {
         </Form>
       </Modal.Body>
       <Modal.Footer>
-        <Button>Add</Button>
+        <Button onClick={handleCreation}>Add</Button>
       </Modal.Footer>
     </Modal>
     
