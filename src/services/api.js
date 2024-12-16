@@ -95,6 +95,11 @@ export const getGroupById = async (id) => {
     return response.data
 }
 
+export const updateGroupUsers = async (id, usersIds) => {
+  const response = await i.put('/party/' + id + '/addUsers', usersIds)
+    return response.data
+}
+
 export const modifyGroupById = async (id, group) => { // delete group es ahora disable group, no se borran
   const response = await i.put('/party/' + id, group)
     return response.data
@@ -113,7 +118,7 @@ export const getEvents = async () => {
 }
 
 export const getEventsByGroupId = async (id) => {
-  const response = await i.get('/events/' + id)
+  const response = await i.get('/event/party/' + id)
     return response.data
 }
 

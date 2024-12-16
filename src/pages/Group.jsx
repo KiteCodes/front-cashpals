@@ -53,8 +53,8 @@ const Group = () => {
                <h1>{group.name}</h1>
                <Container fluid className="d-flex justify-content-center p-3 border rounded"  style={{ width: "100%", maxWidth: "800px", backgroundColor: "white"}}>
                   <Container className="d-flex flex-column gap-3">
-                     <Container className='d-flex gap-2'>
-                        <h4>{group.description}</h4>
+                     <Container className='d-flex gap-2 align-items-center'>
+                        <h4 style={{margin: 0}}>{group.description}</h4>
                         <Button className='ms-auto' variant="primary" onClick={() => setModalShowUser(true)}>Add User</Button>
                         <Button variant="primary" onClick={() => setModalShowEvent(true)}>Add Event</Button>
                      </Container>
