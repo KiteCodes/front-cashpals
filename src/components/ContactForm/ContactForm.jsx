@@ -4,30 +4,27 @@ import Form from 'react-bootstrap/Form';
 import Row from 'react-bootstrap/Row';
 import Modal from 'react-bootstrap/Modal';
 import {useEffect, useState} from 'react';
-import { getUsers, saveContacts} from '../../services/api';
+import { getContacts, getUsers, saveContacts} from '../../services/api';
 import ListGroup from 'react-bootstrap/ListGroup';
 import {useUserContext} from '../../providers/UserProvider';
 
-
 const ContactForm = (props) => {
   const {user} = useUserContext()
-
+  const [c, setC] = useState([])
   const [contactsList, setContactsList] = useState([])
   const [users, setUsers] = useState()
 
   const setContacts = (id, e) => {
     e.preventDefault();
-    console.log(contactsList)
-    contactsList.push(id)
-    setContactsList(contactsList)
+    const newList = contactsList.some((contact) => contact === id) ? contactsList.filter((contact) => contact !== id) : [...contactsList, id]
+    setContactsList(newList)
   }
 
   const listUsers = () => users?.map((data)=>{
-    return (
-      <ListGroup.Item key={data.username} action onClick={(e)=>setContacts(data.id, e)} >
-        {data.username} 
-      </ListGroup.Item>
-    )
+    return c.some((contact) => contact === data.username) || c.length > 0 ? <></> : 
+    <ListGroup.Item key={data.username} action onClick={(e)=>setContacts(data.username, e)} >
+      {data.username} 
+    </ListGroup.Item>
   })
 
   const handleSaveContacts = async () =>{
@@ -38,6 +35,9 @@ const ContactForm = (props) => {
   useEffect(()=>{
     getUsers().then(data =>{
       setUsers(data)
+    })
+    getContacts(user.id).then(data =>{
+      setC(data)
     })
   }, []);
 
