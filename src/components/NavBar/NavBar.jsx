@@ -8,7 +8,7 @@ const NavBar = () => {
     <Navbar fixed='top' bg="primary" data-bs-theme="dark">
     <Container>
         <Navbar.Brand href='/'>
-        <Image fluid src="../../logoProv_svg.svg"
+        <Image fluid src="/logocashpals.svg"
         style={{ height: '40px', width: 'auto' }}/>
         </Navbar.Brand>
         <Nav className="ms-auto">
