@@ -5,7 +5,7 @@ import Button from 'react-bootstrap/Button';
 import ListGroup from 'react-bootstrap/ListGroup';
 import {useEffect, useState} from 'react';
 import ContactForm from '../components/ContactForm/ContactForm';
-import { getContacts, saveContacts } from '../services/api';
+import { getContacts, getUsers, saveContacts } from '../services/api';
 import { useUserContext } from '../providers/UserProvider';
 
 const Contacts = () => {
@@ -13,22 +13,19 @@ const Contacts = () => {
    const navigate = useNavigate()
    const [modalShow, setModalShow] = useState(false)
    const [contacts, setContacts] = useState()
-   const [contactsList, setContactsList] = useState()
 
    const goNavigate = (dir) =>{
       navigate(dir)
    }
 
-   const listContacts = () =>{
-      contacts?.map(c=>(<>{c.username}</>)) // añadir logica de seleccionar varios usuarios con su id
-   }
-
-   const handleSaveContacts = async () =>{
-      await saveContacts(user.id, contactsList)
-   }
+   const listContacts = () => contacts?.map((data)=>{
+      return (
+      <ListGroup.Item key={data.username}>
+         {data.username} 
+      </ListGroup.Item>)
+   })
 
    useEffect(()=>{
-      console.log(user)
       getContacts(user.id).then(data =>{
          setContacts(data)
       })
@@ -48,20 +45,8 @@ const Contacts = () => {
                      <Button className='ms-auto' variant="primary" onClick={() => setModalShow(true)}>Add contact</Button>
                   </Container>
                      <ListGroup >
-                        <ListGroup.Item>
-                        Link 1
-                        </ListGroup.Item>
-                        <ListGroup.Item>
-                        Link 2
-                        </ListGroup.Item>
-                        <ListGroup.Item>
-                        Link 1
-                        </ListGroup.Item>
-                        <ListGroup.Item>
-                        Link 2
-                        </ListGroup.Item>
+                        {listContacts()}
                      </ListGroup>
-
                   </Container>
                </Container>
             </Container>
