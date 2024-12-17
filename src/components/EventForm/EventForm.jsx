@@ -4,7 +4,7 @@ import Form from 'react-bootstrap/Form';
 import Row from 'react-bootstrap/Row';
 import Modal from 'react-bootstrap/Modal';
 import {useState, useEffect} from 'react';
-import {createEvent, getGroupsByUserId, getUsers} from '../../services/api';
+import { createEvent } from '../../services/api';
 import { useUserContext } from '../../providers/UserProvider';
 import {useParams} from 'react-router-dom';
 import {getUsersByGroupId} from '../../services/api.js';
@@ -27,13 +27,10 @@ const EventForm = (props) => {
   }, []);
 
   const handleCheckboxChange = (userId) => {
-    setNewUsers(prevState => {
-      if (prevState.includes(userId)) {
-        return prevState.filter(id => id !== userId);
-      } else {
-        return [...prevState, userId];
-      }
-    });
+    const newList = newUsers.some((user) => user === userId) ? newUsers.filter((user) => user !== userId) : [...newUsers, userId]
+    setNewUsers(newList)
+  setEvent({...event, usersIds: newUsers});
+  console.log(event)
   };
 
   const listUsers = () => users?.map((data) => { 

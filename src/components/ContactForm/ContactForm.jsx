@@ -22,7 +22,7 @@ const ContactForm = (props) => {
 
   const listUsers = () => users?.map((data)=>{
     return c.some((contact) => contact === data.username) || c.length > 0 ? <></> : 
-    <ListGroup.Item key={data.username} action onClick={(e)=>setContacts(data.username, e)} >
+    <ListGroup.Item key={data.username} action onClick={(e) => setContacts(data.username, e)} >
       {data.username} 
     </ListGroup.Item>
   })
