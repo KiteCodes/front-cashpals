@@ -64,12 +64,12 @@ export const deleteUser = async (id) => {
 } 
 
 export const getContacts = async (id) => {
-  const response = await i.get('/user/contacts?id=' + id)
+  const response = await i.get('/user/contacts/' + id)
     return response.data
 }
 
-export const saveContacts = async (contactList) => {
-  const response = await i.put('/user/contacts', contactList)
+export const saveContacts = async (userObject) => {
+  const response = await i.put('/user/contacts', userObject)
     return response.data
 }
 
@@ -145,17 +145,17 @@ export const deleteEvent = async (id) => {
 // TRANSACTION RELATED 
 
 export const getTransactions = async () => {
-  const response = i.get('/transaction')
+  const response = await i.get('/transaction')
     return response.data
 }
 
 export const createTransaction = async (transaction) => {
-  const response = i.post('/transaction', transaction)
+  const response = await i.post('/transaction', transaction)
     return response.data
 }
 
 export const getTransactionById = async (id) => {
-  const response = i.get('/transaction/' + id)
+  const response = await i.get('/transaction/' + id)
     return response.data
 }
 

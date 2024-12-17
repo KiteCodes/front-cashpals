@@ -29,8 +29,7 @@ const EventForm = (props) => {
   const handleCheckboxChange = (userId) => {
     const newList = newUsers.some((user) => user === userId) ? newUsers.filter((user) => user !== userId) : [...newUsers, userId]
     setNewUsers(newList)
-  setEvent({...event, usersIds: newUsers});
-  console.log(event)
+    setEvent({...event, usersIds: newUsers});
   };
 
   const listUsers = () => users?.map((data) => { 
@@ -38,8 +37,8 @@ const EventForm = (props) => {
         <ListGroup.Item key={data.id} className='d-flex justify-content-between align-items-center'>
           <InputGroup.Checkbox
           aria-label="Checkbox for following text input"
-          checked={newUsers.includes(data.id)}
           onChange={() => handleCheckboxChange(data.id)}
+          checked={newUsers.includes(data.id)}
         />
           <p style={{margin: 0}}>{data.username}</p>
         </ListGroup.Item>
@@ -47,6 +46,7 @@ const EventForm = (props) => {
   });
 
   const handleCreation = async () => {
+    console.log(event)
     await createEvent(event);
     props.updateEvents();
     props.onHide();

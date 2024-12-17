@@ -1,5 +1,4 @@
 import Button from 'react-bootstrap/Button';
-import Col from 'react-bootstrap/Col';
 import Form from 'react-bootstrap/Form';
 import Row from 'react-bootstrap/Row';
 import Modal from 'react-bootstrap/Modal';
@@ -7,10 +6,12 @@ import {useEffect, useState} from 'react';
 import { getContacts, getUsers, saveContacts} from '../../services/api';
 import ListGroup from 'react-bootstrap/ListGroup';
 import {useUserContext} from '../../providers/UserProvider';
+import InputGroup from 'react-bootstrap/InputGroup';
 
 const ContactForm = (props) => {
   const {user} = useUserContext()
   const [c, setC] = useState([])
+  const [u, setU] = useState({id: user.id, contactIDs: []})
   const [contactsList, setContactsList] = useState([])
   const [users, setUsers] = useState()
 
@@ -21,15 +22,22 @@ const ContactForm = (props) => {
   }
 
   const listUsers = () => users?.map((data)=>{
-    return c.some((contact) => contact === data.username) || c.length > 0 ? <></> : 
-    <ListGroup.Item key={data.username} action onClick={(e) => setContacts(data.username, e)} >
-      {data.username} 
+    if(data.id !== user.id) return c.some((contact) => contact === data.username) || c.length > 0 ? <></> : 
+    <ListGroup.Item key={data.id} className='d-flex justify-content-between align-items-center' >
+      <InputGroup.Checkbox
+          aria-label="Checkbox for following text input"
+          onChange={(e) => setContacts(data.id, e)}
+          checked={contactsList.includes(data.id)}
+        />
+          <p style={{margin: 0}}>{data.username}</p>
     </ListGroup.Item>
   })
 
   const handleSaveContacts = async () =>{
-    console.log(contactsList)
-      //await saveContacts(user.id, contactsList)
+    console.log(user.id)
+    u.contactIDs = contactsList
+    await saveContacts(u)
+    props.updateContacts()
   }
 
   useEffect(()=>{
