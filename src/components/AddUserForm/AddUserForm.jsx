@@ -33,7 +33,8 @@ const AddUserForm = (props) => {
   };
 
   const listUsers = () => users?.map((data) => { 
-    if(data.id !== user.id && users.includes(data.id))
+    console.log(users)
+    if(data.id !== user.id && !users.includes(data.id))
       return (
         <ListGroup.Item key={data.id} className='d-flex justify-content-between align-items-center'>
           <InputGroup.Checkbox
