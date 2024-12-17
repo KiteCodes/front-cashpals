@@ -160,21 +160,21 @@ export const getTransactionById = async (id) => {
 }
 
 export const modifyTransaction = async (id, transaction) => {
-  const response = i.put('transaction/' + id, transaction)
+  const response = await i.put('transaction/' + id, transaction)
     return response.data
 }
 
 export const deleteTransaction = async (id) => {
-  const response = i.delete('/transaction/' + id)
+  const response = await i.delete('/transaction/' + id)
     return response.data
 }
 
 export const getTransactionByDebtorId = async (id) => {
-  const response = i.get('/transaction/debtor/' + id)
+  const response = await i.get('/transaction/debtor/' + id)
     return response.data
 }
 
 export const getTransactionByIndebtedId = async (id) => {
-  const response = i.get('/transaction/indebted/' + id)
+  const response = await i.get('/transaction/indebted/' + id)
     return response.data
 }
