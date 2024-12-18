@@ -19,21 +19,9 @@ const Arrival = () => {
             </Col>
          </Row>
       </Container>
-      <HorizontalScroll/>
-      <Container className="d-flex justify-content-center" style={{maxHeight: 1000}}>
-         <Row>
-            <Col>
-               <h2>Features</h2>
-            </Col>
-         </Row>
-         <Row>
-            <Col>
-            </Col>
-            <Col>
-            </Col>
-            <Col>
-            </Col>
-         </Row>
+      <HorizontalScroll/>  
+      <Container style={{height: 1000}}>
+
       </Container>
       <Footer/>
       </>      
