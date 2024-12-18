@@ -145,17 +145,17 @@ export const deleteEvent = async (id) => {
 // TRANSACTION RELATED 
 
 export const getTransactions = async () => {
-  const response = i.get('/transaction')
+  const response = await i.get('/transaction')
     return response.data
 }
 
 export const createTransaction = async (transaction) => {
-  const response = i.post('/transaction', transaction)
+  const response = await i.post('/transaction', transaction)
     return response.data
 }
 
 export const getTransactionById = async (id) => {
-  const response = i.get('/transaction/' + id)
+  const response = await i.get('/transaction/' + id)
     return response.data
 }
 
