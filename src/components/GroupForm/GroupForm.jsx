@@ -9,13 +9,13 @@ import { useUserContext } from '../../providers/UserProvider';
 
 
 const GroupForm = (props) => {
-  const [group, setGroup] = useState({name: '', description: '', ownerId: ''});
   const {user} = useUserContext();
+  const [group, setGroup] = useState({name: '', description: '', ownerId: user.id, usersIds: [], eventsIds: []});
 
   const handleCreation = async () => {
-    setGroup({...group, ownerId: user.id})
-    await createGroup(group)
-    props.onHide()
+    await createGroup(group);
+    props.updateGroups();
+    props.onHide();
   }
 
   return (

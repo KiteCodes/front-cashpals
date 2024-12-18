@@ -44,8 +44,13 @@ export const getUsers = async () => {
 }
 
 export const getUserById = async (id) => {
-  const response = i.get('/user/' + id)
+  const response = await i.get('/user/' + id)
     return response.data
+}
+
+export const getUsersByGroupId = async (id) => {
+  const response = await i.get('/user/party/' + id)
+  return response.data
 }
 
 export const modifyUser = async (id, user) => {
@@ -72,7 +77,12 @@ export const saveContacts = async (contactList) => {
 
 export const getGroups = async () => {
   const response = await i.get('/party')
-    return response.data
+  return response.data
+}
+
+export const getGroupsByUserId = async (id) => {
+  const response = await i.get('/party/user/' + id)
+  return response.data
 }
 
 export const createGroup = async (group) => {
@@ -85,15 +95,30 @@ export const getGroupById = async (id) => {
     return response.data
 }
 
+export const updateGroupUsers = async (id, usersIds) => {
+  const response = await i.put('/party/' + id + '/addUsers', usersIds)
+    return response.data
+}
+
 export const modifyGroupById = async (id, group) => { // delete group es ahora disable group, no se borran
   const response = await i.put('/party/' + id, group)
     return response.data
 } 
 
+export const deleteGroup = async (id) => {
+  const response = await i.delete('/party/' + id)
+    return response.data
+}
+
 // EVENT RELATED 
 
 export const getEvents = async () => {
   const response = await i.get('/event')
+    return response.data
+}
+
+export const getEventsByGroupId = async (id) => {
+  const response = await i.get('/event/party/' + id)
     return response.data
 }
 
@@ -135,21 +160,21 @@ export const getTransactionById = async (id) => {
 }
 
 export const modifyTransaction = async (id, transaction) => {
-  const response = i.put('transaction/' + id, transaction)
+  const response = await i.put('transaction/' + id, transaction)
     return response.data
 }
 
 export const deleteTransaction = async (id) => {
-  const response = i.delete('/transaction/' + id)
+  const response = await i.delete('/transaction/' + id)
     return response.data
 }
 
 export const getTransactionByDebtorId = async (id) => {
-  const response = i.get('/transaction/debtor/' + id)
+  const response = await i.get('/transaction/debtor/' + id)
     return response.data
 }
 
 export const getTransactionByIndebtedId = async (id) => {
-  const response = i.get('/transaction/indebted' + id)
+  const response = await i.get('/transaction/indebted/' + id)
     return response.data
 }
