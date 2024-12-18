@@ -26,6 +26,7 @@ const Home = () => {
          setDebtorTransactions(data)
       });
       getTransactionByIndebtedId(user.id).then(data => {
+         console.log(data)
          setIndebtedTransactions(data)
       });
    }
