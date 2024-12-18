@@ -14,7 +14,7 @@ const Contacts = () => {
 
    const listContacts = () => contacts?.map((data)=>{
       return (
-      <ListGroup.Item key={data.username}>
+      <ListGroup.Item key={data.id}>
          {data.username} 
       </ListGroup.Item>)
    })

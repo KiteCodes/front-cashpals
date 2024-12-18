@@ -15,8 +15,7 @@ const ContactForm = (props) => {
   const [contactsList, setContactsList] = useState([])
   const [users, setUsers] = useState()
 
-  const setContacts = (id, e) => {
-    e.preventDefault();
+  const setContacts = (id) => {
     const newList = contactsList.some((contact) => contact === id) ? contactsList.filter((contact) => contact !== id) : [...contactsList, id]
     setContactsList(newList)
   }
@@ -26,7 +25,7 @@ const ContactForm = (props) => {
     <ListGroup.Item key={data.id} className='d-flex justify-content-between align-items-center' >
       <InputGroup.Checkbox
           aria-label="Checkbox for following text input"
-          onChange={(e) => setContacts(data.id, e)}
+          onChange={() => setContacts(data.id)}
           checked={contactsList.includes(data.id)}
         />
           <p style={{margin: 0}}>{data.username}</p>
@@ -34,10 +33,10 @@ const ContactForm = (props) => {
   })
 
   const handleSaveContacts = async () =>{
-    console.log(user.id)
     u.contactIDs = contactsList
     await saveContacts(u)
-    props.updateContacts()
+    props.updateUsers()
+    props.onHide()
   }
 
   useEffect(()=>{
