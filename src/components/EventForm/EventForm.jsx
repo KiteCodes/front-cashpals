@@ -16,8 +16,7 @@ const EventForm = (props) => {
   const {user} = useUserContext();
   const { id } = useParams();
   const [users, setUsers] = useState([]);
-  const [newUsers, setNewUsers] = useState([]);
-  const [event, setEvent] = useState({name: '', description: '', price: '', creatorId: user.id, usersIds: newUsers, partyId: id});
+  const [event, setEvent] = useState({name: '', description: '', price: '', creatorId: user.id, usersIds: [], partyId: id});
 
 
   useEffect(()=>{
@@ -27,10 +26,13 @@ const EventForm = (props) => {
   }, []);
 
   const handleCheckboxChange = (userId) => {
-    const newList = newUsers.some((user) => user === userId) ? newUsers.filter((user) => user !== userId) : [...newUsers, userId]
-    setNewUsers(newList)
-    setEvent({...event, usersIds: newUsers});
-  };
+    if(event.usersIds.includes(userId)){
+      setEvent({...event, usersIds: event.usersIds.filter(id => id !== userId)})
+    } else {
+      setEvent({...event, usersIds: [...event.usersIds, userId]})
+    }
+    console.log(event)
+  }
 
   const listUsers = () => users?.map((data) => { 
       return (
@@ -38,7 +40,7 @@ const EventForm = (props) => {
           <InputGroup.Checkbox
           aria-label="Checkbox for following text input"
           onChange={() => handleCheckboxChange(data.id)}
-          checked={newUsers.includes(data.id)}
+          checked={event.usersIds.includes(data.id)}
         />
           <p style={{margin: 0}}>{data.username}</p>
         </ListGroup.Item>

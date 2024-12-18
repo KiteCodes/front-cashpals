@@ -2,7 +2,7 @@ import {useState} from "react";
 import LoggedNavBar from "../components/LoggedNavBar/LoggedNavBar";
 import { Trash } from 'react-bootstrap-icons';
 import { Container, Button, ListGroup } from "react-bootstrap";
-import {deleteTransaction, getTransactionByDebtorId, getTransactionByIndebtedId} from '../services/api';
+import {deleteTransaction, getTransactionByDebtorId, getTransactionByIndebtedId, getUsers} from '../services/api';
 import {useEffect} from 'react';
 import {useUserContext} from '../providers/UserProvider';
 
@@ -10,9 +10,11 @@ const Home = () => {
    const {user} = useUserContext();
    const [debtorTransactions, setDebtorTransactions] = useState();
    const [indebtedTransactions, setIndebtedTransactions] = useState();
+   const [users, setUsers] = useState();
 
    useEffect(() => {
-      updateTransactions();
+      updateUsers();
+      updateTransactions();  
    }, []);
 
    const handleDeleteTransaction = async (id) =>{
@@ -29,30 +31,41 @@ const Home = () => {
       });
    }
 
+   const updateUsers = () => {
+      getUsers().then(data => {
+         setUsers(data)
+      });
+   }
+
    const listNegativeTransactions = () => 
       indebtedTransactions?.map((data) => {
-         if(!data.indebtedId.includes(data.debtorId))
-         return (
-            <ListGroup.Item key={data.eventId} className='d-flex justify-content-between align-items-center'>
-               <p style={{margin: 0, color: 'red'}}>{data.value}</p>
-               <Button onClick={() => handleDeleteTransaction(data.eventId)} variant="outline-danger" size="sm">
-                  <Trash size={15} />
-               </Button>
-            </ListGroup.Item>
-         )
+         if(!data.indebtedId.includes(data.debtorId)){
+            const debtor = users?.find(user => user.id === data.debtorId);
+            return (
+               <ListGroup.Item key={data.eventId} className='d-flex justify-content-between align-items-center'>
+                  <p style={{margin: 0, color: 'red'}}> You owe {data.value}€ to {debtor ? debtor.username : ''}</p>
+                  <Button onClick={() => handleDeleteTransaction(data.eventId)} variant="outline-danger" size="sm">
+                     <Trash size={15} />
+                  </Button>
+               </ListGroup.Item>
+            )
+         }
       });
 
    const listPositiveTransactions = () => 
       debtorTransactions?.map((data) => {
-         if(!data.indebtedId.includes(data.debtorId))
+         console.log(data)
+         if(!data.indebtedId.includes(data.debtorId)){
+            const debtor = users?.find(user => user.id === data.indebtedId[0]);
          return (
-            <ListGroup.Item key={data.eventId} className='d-flex justify-content-between align-items-center'>
-               <p style={{margin: 0, color: 'green'}}>{data.value}</p>
+            <ListGroup.Item className='d-flex justify-content-between align-items-center'>
+               <p style={{margin: 0, color: 'green'}}>{debtor ? debtor.username : ''} owes you {data.value}€</p>
                <Button onClick={() => handleDeleteTransaction(data.eventId)} variant="outline-danger" size="sm">
                   <Trash size={15} />
                </Button>
             </ListGroup.Item>
          )
+      }
       });
 
    return (

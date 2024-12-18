@@ -18,7 +18,7 @@ const LoggedNavBar = () => {
         <LateralNav />
         <Nav className="ms-auto">
         <Navbar.Brand style={{ cursor: 'pointer'}} onClick={() => goNavigate("/")}>
-          <Image fluid src="/logoProv_svg.svg"
+          <Image fluid src="/logocashpals.svg"
           style={{ height: '40px', width: 'auto' }}/>
         </Navbar.Brand>
         </Nav>

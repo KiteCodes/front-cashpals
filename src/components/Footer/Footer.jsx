@@ -5,9 +5,9 @@ const Footer = () => {
     <Container fluid>
         <Row className='bg-primary'>
             <Col>
-                <Stack className='align-items-center gap-2 m-3'>
-                    <Image src="/logoProv_svg.svg" style={{ height: '40px', width: 'auto' }}/>
+                <Stack className='align-items-center gap-2 m-3'>                   
                     <p className='text-white'>Help</p>
+                    <Image src="/logocashpals.svg" style={{ height: '40px', width: 'auto' }}/>
                     <p className='text-white'>© 2024 CashPals</p>
                 </Stack>
             </Col>
