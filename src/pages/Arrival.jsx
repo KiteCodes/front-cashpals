@@ -22,8 +22,10 @@ const Arrival = () => {
             </Col>
          </Row>
       </Container>
-      <HorizontalScroll/>  
-      <FeaturesCarousel/>
+      <HorizontalScroll/>
+      <Container className='mb-5 mt-5' style={{backgroundColor: 'rgba(255, 255, 255, 0.7)', borderRadius: 20, padding: 20}}>
+         <FeaturesCarousel/>
+      </Container> 
       <Footer/>
       </>      
    )
