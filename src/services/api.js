@@ -64,12 +64,12 @@ export const deleteUser = async (id) => {
 } 
 
 export const getContacts = async (id) => {
-  const response = await i.get('/user/contacts?id=' + id)
+  const response = await i.get('/user/contacts/' + id)
     return response.data
 }
 
-export const saveContacts = async (contactList) => {
-  const response = await i.put('/user/contacts', contactList)
+export const saveContacts = async (userObject) => {
+  const response = await i.put('/user/contacts', userObject)
     return response.data
 }
 

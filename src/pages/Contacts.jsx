@@ -1,35 +1,33 @@
-import {useNavigate} from 'react-router-dom';
 import LoggedNavBar from '../components/LoggedNavBar/LoggedNavBar';
 import {Container} from 'react-bootstrap';
 import Button from 'react-bootstrap/Button';
 import ListGroup from 'react-bootstrap/ListGroup';
 import {useEffect, useState} from 'react';
 import ContactForm from '../components/ContactForm/ContactForm';
-import { getContacts, getUsers, saveContacts } from '../services/api';
+import { getContacts, } from '../services/api';
 import { useUserContext } from '../providers/UserProvider';
 
 const Contacts = () => {
    const {user} = useUserContext()
-   const navigate = useNavigate()
    const [modalShow, setModalShow] = useState(false)
    const [contacts, setContacts] = useState()
 
-   const goNavigate = (dir) =>{
-      navigate(dir)
-   }
-
    const listContacts = () => contacts?.map((data)=>{
       return (
-      <ListGroup.Item key={data.username}>
+      <ListGroup.Item key={data.id}>
          {data.username} 
       </ListGroup.Item>)
    })
 
    useEffect(()=>{
+      updateUsers()
+   }, []);
+
+   const updateUsers = () => {
       getContacts(user.id).then(data =>{
          setContacts(data)
       })
-   }, []);
+      }
 
    return (
       <>
@@ -51,10 +49,7 @@ const Contacts = () => {
                </Container>
             </Container>
          </Container>
-         <ContactForm show={modalShow} onHide={() => setModalShow(false)}/>
-
-
-         {/* <button onClick={()=>localStorage.clear()}>log out</button> */}
+         <ContactForm show={modalShow} updateUsers={updateUsers} onHide={() => setModalShow(false)}/>
       </>
    )
 }

@@ -23,13 +23,8 @@ const AddUserForm = (props) => {
   }, [props.updateUsers]);
 
   const handleCheckboxChange = (userId) => {
-    setNewUsers(prevState => {
-      if (prevState.includes(userId)) {
-        return prevState.filter(id => id !== userId);
-      } else {
-        return [...prevState, userId];
-      }
-    });
+    const newList = newUsers.some((user) => user === userId) ? newUsers.filter((user) => user !== userId) : [...newUsers, userId]
+    setNewUsers(newList)
   };
 
   const listUsers = () => users?.map((data) => { 

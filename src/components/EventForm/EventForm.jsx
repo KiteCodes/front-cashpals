@@ -45,6 +45,7 @@ const EventForm = (props) => {
   });
 
   const handleCreation = async () => {
+    console.log(event)
     await createEvent(event);
     props.updateEvents();
     props.onHide();
