@@ -10,10 +10,13 @@ const Profile = () => {
    return (
       <>
          <LoggedNavBar/>
-         <Container fluid className="d-flex flex-column gap-4 justify-content-center align-items-center" style={{marginTop: "100px"}}>
-            <h1>Profile</h1>
+         <Container fluid className="d-flex flex-column gap-4 justify-content-center align-items-center" style={{marginTop: "200px"}}>
             <Form className="p-3 border rounded" style={{ width: "100%", maxWidth: "700px", backgroundColor: 'rgba(255, 255, 255, 0.8)'}}>
-
+               <Row className="mb-3 w-100">
+                  <Col className="text-center">
+                     <h1>Profile</h1>
+                  </Col>
+               </Row>
                <ListGroup variant='flush'>
                   <Row style={{padding: "12px"}}>
                      <Form.Group as={Col} controlId="formGridUsername">
@@ -25,7 +28,7 @@ const Profile = () => {
                         <Form.Control type="email" placeholder="pepito" />
                      </Form.Group>
                   </Row>
-                  <ListGroup.Item>
+                  <ListGroup.Item style={{padding: "0px 16px"}}>
                   </ListGroup.Item>
                   <Row style={{padding: "12px"}}>
                      <Form.Group as={Col} controlId="formGridFirstname">
@@ -37,7 +40,7 @@ const Profile = () => {
                         <Form.Control type="text" placeholder="García" />
                      </Form.Group>
                   </Row>
-                  <ListGroup.Item>
+                  <ListGroup.Item style={{padding: "0px 16px"}}>
                   </ListGroup.Item>
                   <Row style={{padding: "12px"}}>
                      <Form.Group as={Col} controlId="formGridUsername">
@@ -49,7 +52,7 @@ const Profile = () => {
                         <Form.Control type="password" placeholder="*****" />
                      </Form.Group>
                   </Row>
-                  <ListGroup.Item>
+                  <ListGroup.Item style={{padding: "0px 16px"}}>
                   </ListGroup.Item>
                   <Row style={{padding: "12px"}}>
                      <Form.Group as={Col} controlId="formGridFirstname">

@@ -1,7 +1,7 @@
 import {useState} from "react";
 import LoggedNavBar from "../components/LoggedNavBar/LoggedNavBar";
 import { Trash } from 'react-bootstrap-icons';
-import { Container, Button, ListGroup } from "react-bootstrap";
+import { Container, Button, ListGroup, Row, Col } from "react-bootstrap";
 import {deleteTransaction, getTransactionByDebtorId, getTransactionByIndebtedId, getUsers} from '../services/api';
 import {useEffect} from 'react';
 import {useUserContext} from '../providers/UserProvider';
@@ -26,7 +26,6 @@ const Home = () => {
          setDebtorTransactions(data)
       });
       getTransactionByIndebtedId(user.id).then(data => {
-         console.log(data)
          setIndebtedTransactions(data)
       });
    }
@@ -54,7 +53,6 @@ const Home = () => {
 
    const listPositiveTransactions = () => 
       debtorTransactions?.map((data) => {
-         console.log(data)
          if(!data.indebtedId.includes(data.debtorId)){
             const debtor = users?.find(user => user.id === data.indebtedId[0]);
          return (
@@ -71,10 +69,14 @@ const Home = () => {
    return (
       <>
          <LoggedNavBar/>
-         <Container fluid className="d-flex justify-content-center" style={{marginTop: "100px"}}>
+         <Container fluid className="d-flex justify-content-center" style={{marginTop: "200px"}}>
             <Container fluid className="d-flex flex-column justify-content-center align-items-center" >
-               <h1>Your Balance</h1>
-               <Container fluid className="d-flex justify-content-center p-3 border rounded"  style={{ width: "100%", maxWidth: "800px", backgroundColor: 'rgba(255, 255, 255, 0.8)'}}>
+               <Container fluid className="d-flex flex-column justify-content-center p-3 border rounded"  style={{ width: "100%", maxWidth: "800px", backgroundColor: 'rgba(255, 255, 255, 0.8)'}}>
+                  <Row className="mb-3 w-100">
+                     <Col className="text-center">
+                        <h1>Balance</h1>
+                     </Col>
+                  </Row>
                   <Container fluid className="d-flex justify-content-center" style={{ width: "100%", maxWidth: "800px"}}>
                      <Container className="d-flex flex-column">
                         <p className="align-self-center">Debt</p>

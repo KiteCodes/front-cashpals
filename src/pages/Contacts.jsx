@@ -1,5 +1,5 @@
 import LoggedNavBar from '../components/LoggedNavBar/LoggedNavBar';
-import {Container} from 'react-bootstrap';
+import {Container, Row, Col} from 'react-bootstrap';
 import Button from 'react-bootstrap/Button';
 import ListGroup from 'react-bootstrap/ListGroup';
 import {useEffect, useState} from 'react';
@@ -32,11 +32,14 @@ const Contacts = () => {
    return (
       <>
          <LoggedNavBar/>
-         <Container fluid className="d-flex justify-content-center" style={{marginTop: "100px"}}>
+         <Container fluid className="d-flex justify-content-center" style={{marginTop: "200px"}}>
             <Container fluid className="d-flex flex-column justify-content-center align-items-center gap-3" >
-                  
-               <h1>Contacts</h1>
-               <Container fluid className="d-flex justify-content-center p-3 border rounded"  style={{ width: "100%", maxWidth: "800px", backgroundColor: 'rgba(255, 255, 255, 0.8)'}}>
+               <Container fluid className="d-flex flex-column justify-content-center p-3 border rounded"  style={{ width: "100%", maxWidth: "800px", backgroundColor: 'rgba(255, 255, 255, 0.8)'}}>
+                  <Row className="mb-3 w-100">
+                     <Col className="text-center">
+                        <h1>Contacts</h1>
+                     </Col>
+                  </Row>
                   <Container className="d-flex flex-column gap-3">
                   <Container className="d-flex gap-2">
                      <h2 className=" align-self-center mb-0">Contacts list</h2>
