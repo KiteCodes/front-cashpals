@@ -7,7 +7,6 @@ import {useState, useEffect} from 'react';
 import { createEvent } from '../../services/api';
 import { useUserContext } from '../../providers/UserProvider';
 import {useParams} from 'react-router-dom';
-import {getUsersByGroupId} from '../../services/api.js';
 import ListGroup from 'react-bootstrap/ListGroup';
 import InputGroup from 'react-bootstrap/InputGroup';
 
@@ -15,15 +14,13 @@ import InputGroup from 'react-bootstrap/InputGroup';
 const EventForm = (props) => {
   const {user} = useUserContext();
   const { id } = useParams();
-  const [users, setUsers] = useState([]);
+  //const [users, setUsers] = useState([]);
   const [event, setEvent] = useState({name: '', description: '', price: '', creatorId: user.id, usersIds: [], partyId: id});
 
 
   useEffect(()=>{
-    getUsersByGroupId(id).then(data =>{
-      setUsers(data)
-    })
-  }, []);
+    
+  }, [props.updateUsers]);
 
   const handleCheckboxChange = (userId) => {
     if(event.usersIds.includes(userId)){
@@ -34,7 +31,7 @@ const EventForm = (props) => {
     console.log(event)
   }
 
-  const listUsers = () => users?.map((data) => { 
+  const listUsers = () => props.users?.map((data) => { 
       return (
         <ListGroup.Item key={data.id} className='d-flex justify-content-between align-items-center'>
           <InputGroup.Checkbox

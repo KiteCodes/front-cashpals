@@ -101,7 +101,7 @@ const Group = () => {
          <Container fluid className="d-flex justify-content-center" style={{marginTop: "100px"}}>
                {showGroup()}
          </Container>
-         <EventForm show={modalShowEvent} updateEvents={updateEvents} onHide={() => setModalShowEvent(false)}/>
+         <EventForm show={modalShowEvent} updateEvents={updateEvents} onHide={() => setModalShowEvent(false)} users={users} setusers={setUsers} updateUsers={updateUsers}/>
          <AddUserForm show={modalShowUser} updateUsers={updateUsers} onHide={() => setModalShowUser(false)}/>
       </>
    )

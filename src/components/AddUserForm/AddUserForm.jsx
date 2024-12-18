@@ -17,10 +17,10 @@ const AddUserForm = (props) => {
   const [newUsers, setNewUsers] = useState([]);
 
   useEffect(()=>{
-    getUsers().then(data =>{
-      setUsers(data)
+    getUsers().then(data => {
+      setUsers(data);
     })
-  }, []);
+  }, [props.updateUsers]);
 
   const handleCheckboxChange = (userId) => {
     setNewUsers(prevState => {
@@ -33,14 +33,13 @@ const AddUserForm = (props) => {
   };
 
   const listUsers = () => users?.map((data) => { 
-    console.log(users)
     if(data.id !== user.id && !users.includes(data.id))
       return (
         <ListGroup.Item key={data.id} className='d-flex justify-content-between align-items-center'>
           <InputGroup.Checkbox
           aria-label="Checkbox for following text input"
-          checked={newUsers.includes(data.id)}
           onChange={() => handleCheckboxChange(data.id)}
+          checked={newUsers.includes(data.id)}
         />
           <p style={{margin: 0}}>{data.username}</p>
         </ListGroup.Item>
