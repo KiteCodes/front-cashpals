@@ -67,7 +67,7 @@ const Groups = () => {
             <Container fluid className="d-flex flex-column justify-content-center align-items-center gap-3" >
                   
                <h1>Groups</h1>
-               <Container fluid className="d-flex justify-content-center p-3 border rounded"  style={{ width: "100%", maxWidth: "800px", backgroundColor: "white"}}>
+               <Container fluid className="d-flex justify-content-center p-3 border rounded"  style={{ width: "100%", maxWidth: "800px", backgroundColor: 'rgba(255, 255, 255, 0.8)'}}>
                   <Container className="d-flex flex-column gap-3">
                      <Container className="d-flex gap-2">
                         <h2 className=" align-self-center mb-0">Groups list</h2>

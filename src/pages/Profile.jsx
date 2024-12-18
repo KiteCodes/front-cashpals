@@ -12,7 +12,7 @@ const Profile = () => {
          <LoggedNavBar/>
          <Container fluid className="d-flex flex-column gap-4 justify-content-center align-items-center" style={{marginTop: "100px"}}>
             <h1>Profile</h1>
-            <Form className="p-3 border rounded" style={{ width: "100%", maxWidth: "700px", backgroundColor: "white"}}>
+            <Form className="p-3 border rounded" style={{ width: "100%", maxWidth: "700px", backgroundColor: 'rgba(255, 255, 255, 0.8)'}}>
 
                <ListGroup variant='flush'>
                   <Row style={{padding: "12px"}}>

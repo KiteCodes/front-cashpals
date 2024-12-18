@@ -74,7 +74,7 @@ const Home = () => {
          <Container fluid className="d-flex justify-content-center" style={{marginTop: "100px"}}>
             <Container fluid className="d-flex flex-column justify-content-center align-items-center" >
                <h1>Your Balance</h1>
-               <Container fluid className="d-flex justify-content-center p-3 border rounded"  style={{ width: "100%", maxWidth: "800px", backgroundColor: "white"}}>
+               <Container fluid className="d-flex justify-content-center p-3 border rounded"  style={{ width: "100%", maxWidth: "800px", backgroundColor: 'rgba(255, 255, 255, 0.8)'}}>
                   <Container fluid className="d-flex justify-content-center" style={{ width: "100%", maxWidth: "800px"}}>
                      <Container className="d-flex flex-column">
                         <p className="align-self-center">Debt</p>

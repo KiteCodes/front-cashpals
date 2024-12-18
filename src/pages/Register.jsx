@@ -21,9 +21,13 @@ const Register = () => {
    return (
       <>
          <NavBar/>
-         <Container fluid className="d-flex flex-column gap-5 justify-content-center align-items-center" style={{marginTop: "100px"}}>
-            <h1>Register</h1>
-            <Form className="p-3 border rounded" style={{ width: "100%", maxWidth: "700px", backgroundColor: "white"}}>
+         <Container fluid className="d-flex flex-column gap-5 justify-content-center align-items-center" style={{marginTop: "200px"}}>
+            <Form className="p-3 border rounded" style={{ width: "100%", maxWidth: "700px", backgroundColor: 'rgba(255, 255, 255, 0.8)'}}>
+               <Row className="mb-3 w-100">
+                  <Col className="text-center">
+                     <h1>Register</h1>
+                  </Col>
+               </Row>
                <Row className="mb-3">
                   <Form.Group as={Col} controlId="formGridFirstname">
                      <Form.Label>Firstname</Form.Label>
