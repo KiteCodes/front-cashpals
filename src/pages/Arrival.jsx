@@ -11,7 +11,7 @@ const Arrival = () => {
       <Container fluid className="d-flex justify-content-center" style={{maxHeight: 1000, marginTop: 100}}>
          <Row className="justify-content-center">
             <Col className="d-flex flex-column align-items-center">
-               <Image src="/logocashpals4.svg" fluid style={{maxWidth: 300, backgroundColor: 'rgba(205, 232, 229, 0.5)', borderRadius: 100}}/>
+               <Image src="/logocashpals-final.svg" fluid style={{maxWidth: 300, backgroundColor: 'rgba(255, 255, 255, 0.7)', borderRadius: 20}}/>
                <h2 style={{margin: 30}}>Tired of endless calculations?</h2>
                <p style={{maxWidth: 700}}>We get it. Splitting bills is often messy and awkward.
                From calculating who owes what to reminding others to pay up, it can take the fun out of group activities.

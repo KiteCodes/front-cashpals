@@ -32,7 +32,7 @@ const EventForm = (props) => {
   }
 
   const listUsers = () => props.users?.map((data) => { 
-      return (
+      if(data.id !== user.id)return (
         <ListGroup.Item key={data.id} className='d-flex justify-content-between align-items-center'>
           <InputGroup.Checkbox
           aria-label="Checkbox for following text input"
